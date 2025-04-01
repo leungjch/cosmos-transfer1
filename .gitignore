@@ -17,6 +17,7 @@
 outputs/
 checkpoints/*
 !checkpoints/README.md
+third_party/
 
 # Data types
 *.jit

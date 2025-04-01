@@ -452,7 +452,7 @@ def get_ctrl_batch(
     data_batch["video"] = torch.zeros((1, 3, 121, H, W), dtype=torch.uint8).cuda()
     data_batch["image_size"] = torch.tensor([[H, W, H, W]] * 1, dtype=torch.bfloat16).cuda()
     data_batch["padding_mask"] = torch.zeros((1, 1, H, W), dtype=torch.bfloat16).cuda()
-
+    log.info(f"Got data batch")
     return data_batch
 
 

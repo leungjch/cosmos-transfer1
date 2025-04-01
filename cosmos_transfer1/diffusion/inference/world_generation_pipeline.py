@@ -15,6 +15,7 @@
 
 import os
 from typing import Optional
+import time
 
 import numpy as np
 import torch
@@ -135,6 +136,7 @@ class DiffusionControl2WorldGenerationPipeline(BaseWorldGenerationPipeline):
         self.prompt_upsampler = None
         self.upsampler_hint_key = None
         self.hint_details = None
+        self.process_group = None
 
         self.model_name = MODEL_NAME_DICT[checkpoint_name]
         self.model_class = MODEL_CLASS_DICT[checkpoint_name]
@@ -362,6 +364,13 @@ class DiffusionControl2WorldGenerationPipeline(BaseWorldGenerationPipeline):
         if self.offload_network:
             self._load_network()
 
+        # Enable context parallelism if using multiple GPUs
+        if self.process_group is not None:
+            self.model.model.net.enable_context_parallel(self.process_group)
+            self.model.model.base_model.net.enable_context_parallel(self.process_group)
+            if hasattr(self.model.model, "hint_encoders"):
+                self.model.model.hint_encoders.net.enable_context_parallel(self.process_group)
+
         sample = self._run_model(prompt_embedding, negative_prompt_embedding, video_path, control_inputs)
 
         if self.offload_network:
@@ -437,7 +446,7 @@ class DiffusionControl2WorldGenerationPipeline(BaseWorldGenerationPipeline):
         else:
             num_total_frames_with_padding = T
         N_clip = (num_total_frames_with_padding - self.num_input_frames) // num_new_generated_frames
-
+        log.info(f"N_clip: {N_clip}, B: {B}, T: {T}, H: {H}, W: {W}")
         video = []
         for i_clip in tqdm(range(N_clip)):
             data_batch_i = {k: v for k, v in data_batch.items()}
@@ -486,6 +495,7 @@ class DiffusionControl2WorldGenerationPipeline(BaseWorldGenerationPipeline):
                 condition_latent = torch.cat(condition_latent)
 
             # Generate video frames
+            log.info(f"Generating world from control")
             latents = generate_world_from_control(
                 model=self.model,
                 state_shape=self.model.state_shape,
@@ -499,7 +509,9 @@ class DiffusionControl2WorldGenerationPipeline(BaseWorldGenerationPipeline):
                 sigma_max=self.sigma_max if x_sigma_max is not None else None,
                 x_sigma_max=x_sigma_max,
             )
+            log.info(f"Decoding latents")
             frames = self._run_tokenizer_decoding(latents)
+            log.info(f"Decoded frames")
             frames = torch.from_numpy(frames).permute(3, 0, 1, 2)[None]
 
             if i_clip == 0:
@@ -573,6 +585,9 @@ class DiffusionControl2WorldGenerationPipeline(BaseWorldGenerationPipeline):
 
         # Generate video
         log.info("Run generation")
+        # Start timing for generation
+        start_time = time.time()
+
         video = self._run_model_with_offload(
             prompt_embedding,
             negative_prompt_embedding=negative_prompt_embedding,
@@ -580,6 +595,9 @@ class DiffusionControl2WorldGenerationPipeline(BaseWorldGenerationPipeline):
             control_inputs=control_inputs,
         )
         log.info("Finish generation")
+        end_time = time.time()
+        generation_time = end_time - start_time
+        log.info(f"Generation took {generation_time:.2f} seconds, ({generation_time/60:.2f} minutes)")
 
         log.info("Run guardrail on generated video")
         video = self._run_guardrail_on_video_with_offload(video)

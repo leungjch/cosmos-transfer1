@@ -23,6 +23,7 @@ import sys
 from io import BytesIO
 
 import torch
+import time
 
 from cosmos_transfer1.checkpoints import BASE_7B_CHECKPOINT_AV_SAMPLE_PATH, BASE_7B_CHECKPOINT_PATH
 from cosmos_transfer1.diffusion.inference.inference_utils import load_controlnet_specs, validate_controlnet_specs
@@ -229,10 +230,7 @@ def demo(cfg, control_inputs):
     )
 
     if cfg.num_gpus > 1:
-        pipeline.model.model.net.enable_context_parallel(process_group)
-        pipeline.model.model.base_model.net.enable_context_parallel(process_group)
-        if hasattr(pipeline.model.model, "hint_encoders"):
-            pipeline.model.model.hint_encoders.net.enable_context_parallel(process_group)
+        pipeline.process_group = process_group
 
     # Handle multiple prompts if prompt file is provided
     if cfg.batch_input_path:
@@ -258,6 +256,7 @@ def demo(cfg, control_inputs):
             control_inputs=control_inputs,
             save_folder=cfg.video_save_folder,
         )
+
         if generated_output is None:
             log.critical("Guardrail blocked generation.")
             continue

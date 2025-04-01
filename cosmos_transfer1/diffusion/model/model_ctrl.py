@@ -325,6 +325,7 @@ class VideoDiffusionModelWithCtrl(DiffusionV2WModel):
             condition_latent (Optional[torch.Tensor]): latent tensor in shape B,C,T,H,W as condition to generate video.
             num_condition_t (Optional[int]): number of condition latent T, if None, will use the whole first half
         """
+        log.info(f"Generating samples from batch VideoDiffusionModelWithCtrl")
         assert patch_h <= target_h and patch_w <= target_w
         if n_sample is None:
             input_key = self.input_data_key
@@ -589,6 +590,7 @@ class VideoDiffusionT2VModelWithCtrl(DiffusionT2WModel):
             condition_latent (Optional[torch.Tensor]): latent tensor in shape B,C,T,H,W as condition to generate video.
             num_condition_t (Optional[int]): number of condition latent T, if None, will use the whole first half
         """
+        log.info(f"Generating samples from batch VideoDiffusionT2VModelWithCtrl")
         if n_sample is None:
             input_key = self.input_data_key
             n_sample = data_batch[input_key].shape[0]
@@ -618,7 +620,9 @@ class VideoDiffusionT2VModelWithCtrl(DiffusionT2WModel):
                 )
                 * sigma_max
             )
+        log.info(f"X sigma max: {x_sigma_max.shape}")
+        log.info(f"Sampling T2V")
 
         samples = self.sampler(x0_fn, x_sigma_max, num_steps=num_steps, sigma_max=sigma_max)
-
+        log.info(f"Samples: {samples.shape}")
         return samples
