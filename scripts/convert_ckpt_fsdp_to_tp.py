@@ -27,7 +27,8 @@ from tqdm import tqdm
 from cosmos_transfer1.utils import log
 from cosmos_transfer1.utils.easy_io import easy_io
 
-TP_SIZE = 8
+# jusleung: use 4 instead of 8 h100s
+TP_SIZE = 4
 
 
 def is_column(key: str) -> bool:

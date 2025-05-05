@@ -212,7 +212,8 @@ class ExampleTransferDataset(Dataset):
                     }
                     with open(data["video_name"]["t5_embedding_path"], "rb") as f:
                         t5_embedding = pickle.load(f)
-                    data["t5_text_embeddings"] = torch.from_numpy(t5_embedding)  # .cuda()
+                    # print(t5_embedding)
+                    data["t5_text_embeddings"] = torch.from_numpy(np.array(t5_embedding)).squeeze(0)  # .cuda()
                     data["t5_text_mask"] = torch.ones(512, dtype=torch.int64)  # .cuda()
 
                 # Add metadata

@@ -104,7 +104,8 @@ def make_ctrlnet_config_7b_training(
                 timestamp_seed=True,
             ),
             model_parallel=dict(
-                tensor_model_parallel_size=8,
+                # jusleung 4 gpu instead
+                tensor_model_parallel_size=4,
                 sequence_parallel=True,
             ),
             model=dict(
@@ -199,6 +200,7 @@ for key in CTRL_HINT_KEYS_COMB.keys():
     pretrain_ckpt_path = default_model_names[hint_key_short]
     # note: The TP ckpt path are specified as <name>.pt to the script, but actually the <name>_model_mp_*.pt files will be loaded.
     tp_ckpt_path = os.path.join(
+        # jusleung change checkpoint path instead of "checkpoints"
         "checkpoints", os.path.dirname(pretrain_ckpt_path), "checkpoints_tp", os.path.basename(pretrain_ckpt_path)
     )
     config = make_ctrlnet_config_7b_training(

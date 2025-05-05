@@ -33,7 +33,8 @@ def get_sampler(dataset):
 
 def get_example_transfer_dataset(hint_key, is_train=True):
     dataset = L(ExampleTransferDataset)(
-        dataset_dir="datasets/hdvila",
+        # jusleung data dir
+        dataset_dir="/home/data/datasets/hdvila",
         num_frames=121,
         resolution="720",
         hint_key=hint_key,
