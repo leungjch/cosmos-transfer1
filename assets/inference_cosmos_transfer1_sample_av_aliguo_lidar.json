@@ -1,0 +1,7 @@
+{
+    "prompt": "Dashcam footage of an autonomous vehicle shows a suburban street scene. The weather appears to be sunny with a few clouds, clear sky. It's afternoon, given the lighting conditions. The road is dry and clear, with visible lane markings. One pedestrians are visible at the beginning of the footage. The scene captures a typical suburban neighborhood with buildings lining both sides of the road.",
+    "lidar": {
+        "control_weight": 1,
+        "input_control": "assets/depth_to_lidar_vid.mp4"
+    }
+}

@@ -34,7 +34,7 @@ def get_sampler(dataset):
 def get_example_transfer_dataset(hint_key, is_train=True):
     dataset = L(ExampleTransferDataset)(
         # jusleung data dir
-        dataset_dir="/home/data/datasets/hdvila",
+        dataset_dir="/home/data/datasets/cosmos-posttrain-av-large-dataset",
         num_frames=121,
         resolution="720",
         hint_key=hint_key,

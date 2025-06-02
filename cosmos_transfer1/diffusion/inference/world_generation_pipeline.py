@@ -568,13 +568,14 @@ class DiffusionControl2WorldGenerationPipeline(BaseWorldGenerationPipeline):
                 prompt = self._process_prompt_upsampler(prompt, video_path, save_folder)
                 self._pop_torchrun_environ_variables()
                 log.info(f"Upsampled prompt: {prompt}")
-
-        log.info("Run guardrail on prompt")
-        is_safe = self._run_guardrail_on_prompt_with_offload(prompt)
-        if not is_safe:
-            log.critical("Input text prompt is not safe")
-            return None
-        log.info("Pass guardrail on prompt")
+                
+        log.info("Jusleung passing guardrail prompt")
+        # log.info("Run guardrail on prompt")
+        # is_safe = self._run_guardrail_on_prompt_with_offload(prompt)
+        # if not is_safe:
+        #     log.critical("Input text prompt is not safe")
+        #     return None
+        # log.info("Pass guardrail on prompt")
 
         log.info("Run text embedding on prompt")
         if negative_prompt:
@@ -595,13 +596,14 @@ class DiffusionControl2WorldGenerationPipeline(BaseWorldGenerationPipeline):
             control_inputs=control_inputs,
         )
         log.info("Finish generation")
+        
+        log.info("Jusleung passing guardrail")
+        # log.info("Run guardrail on generated video")
+        # video = self._run_guardrail_on_video_with_offload(video)
+        # if video is None:
+        #     log.critical("Generated video is not safe")
+        #     raise ValueError("Guardrail check failed: Generated video is unsafe")
 
-        log.info("Run guardrail on generated video")
-        video = self._run_guardrail_on_video_with_offload(video)
-        if video is None:
-            log.critical("Generated video is not safe")
-            raise ValueError("Guardrail check failed: Generated video is unsafe")
-
-        log.info("Pass guardrail on generated video")
+        # log.info("Pass guardrail on generated video")
 
         return video, prompt

@@ -1,0 +1,10 @@
+{
+    "hdmap": {
+        "control_weight": 0.3,
+        "input_control": "assets/justin-files/hdmap/002be028-9401-11ee-a19a-00044bcbccac_1701845678675978_1701845698675978_0.mp4"
+    },
+    "lidar": {
+        "control_weight": 0.7,
+        "input_control": "assets/justin-files/lidar/002be028-9401-11ee-a19a-00044bcbccac_1701845678675978_1701845698675978_0.mp4"
+    }
+}

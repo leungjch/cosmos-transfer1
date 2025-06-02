@@ -1,0 +1,7 @@
+{
+    "prompt": "Dashcam footage of an autonomous vehicle shows a suburban street scene. The weather appears to be night time, dark, with cloudy sky. It's late evening. The road is dry and clear, with visible lane markings. There are several cars parked along the street, including a white RV and a white truck. A few vehicles are also moving on the road. No pedestrians are visible in the footage. The scene captures a typical suburban neighborhood with houses, trees, and power lines lining the street.",
+    "input_video_path": "assets/nerf_stop_sign_clip_002.mp4",
+    "edge": {
+        "control_weight": 1.0
+   }
+}

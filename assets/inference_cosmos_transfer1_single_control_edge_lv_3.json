@@ -1,0 +1,7 @@
+{
+    "prompt": "Photorealistic footage of a busy urban intersection comes into view, captured from the perspective of a driver traveling down a wide city street. Multiple lanes of traffic converge at a stoplight, with several cars ahead waiting for the light to change. The foreground is dominated by a white sedan positioned squarely in the center lane, flanked by another vehicle in the right lane. To the left and right, additional cars are lined up, some turning and others waiting to proceed straight.",
+    "input_video_path" : "assets/gtc-paris/las-vegas/segment_3.mp4",
+    "edge": {
+        "control_weight": 1.0
+    }
+}

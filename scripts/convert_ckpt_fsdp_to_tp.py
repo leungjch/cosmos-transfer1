@@ -28,7 +28,7 @@ from cosmos_transfer1.utils import log
 from cosmos_transfer1.utils.easy_io import easy_io
 
 # jusleung: use 4 instead of 8 h100s
-TP_SIZE = 4
+TP_SIZE = 8
 
 
 def is_column(key: str) -> bool:

@@ -1,0 +1,384 @@
+[05-11 07:41:48|INFO|scripts/convert_ckpt_tp_to_fsdp.py:189:convert_tp_checkpoint_to_fsdp] Converting TP checkpoint to FSDP for experiment: CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain
+[05-11 07:41:48|CRITICAL|cosmos_transfer1/utils/distributed.py:63:init] [RANK 0]Initialized distributed training with local rank 0 with timeout 1800
+[05-11 07:41:49|INFO|scripts/convert_ckpt_tp_to_fsdp.py:189:convert_tp_checkpoint_to_fsdp] Converting TP checkpoint to FSDP for experiment: CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain
+[05-11 07:41:49|INFO|cosmos_transfer1/utils/distributed.py:73:init] Training with 8 GPUs.
+[05-11 07:41:49|CRITICAL|cosmos_transfer1/utils/trainer.py:62:__init__] Using deprecated config.model.context_parallel_size. Please use config.model_parallel.context_parallel_size instead.
+[05-11 07:41:49|INFO|scripts/convert_ckpt_tp_to_fsdp.py:189:convert_tp_checkpoint_to_fsdp] Converting TP checkpoint to FSDP for experiment: CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain
+[05-11 07:41:49|INFO|scripts/convert_ckpt_tp_to_fsdp.py:189:convert_tp_checkpoint_to_fsdp] Converting TP checkpoint to FSDP for experiment: CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain
+[05-11 07:41:49|INFO|scripts/convert_ckpt_tp_to_fsdp.py:189:convert_tp_checkpoint_to_fsdp] Converting TP checkpoint to FSDP for experiment: CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain
+[05-11 07:41:49|INFO|scripts/convert_ckpt_tp_to_fsdp.py:189:convert_tp_checkpoint_to_fsdp] Converting TP checkpoint to FSDP for experiment: CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain
+[05-11 07:41:50|CRITICAL|cosmos_transfer1/utils/distributed.py:63:init] [RANK 2]Initialized distributed training with local rank 2 with timeout 1800
+[05-11 07:41:50|INFO|scripts/convert_ckpt_tp_to_fsdp.py:189:convert_tp_checkpoint_to_fsdp] Converting TP checkpoint to FSDP for experiment: CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain
+[05-11 07:41:50|CRITICAL|cosmos_transfer1/utils/distributed.py:63:init] [RANK 7]Initialized distributed training with local rank 7 with timeout 1800
+[05-11 07:41:50|CRITICAL|cosmos_transfer1/utils/distributed.py:63:init] [RANK 3]Initialized distributed training with local rank 3 with timeout 1800
+[05-11 07:41:50|CRITICAL|cosmos_transfer1/utils/distributed.py:63:init] [RANK 4]Initialized distributed training with local rank 4 with timeout 1800
+[05-11 07:41:50|CRITICAL|cosmos_transfer1/utils/distributed.py:63:init] [RANK 1]Initialized distributed training with local rank 1 with timeout 1800
+[05-11 07:41:51|CRITICAL|cosmos_transfer1/utils/distributed.py:63:init] [RANK 6]Initialized distributed training with local rank 6 with timeout 1800
+[05-11 07:41:51|INFO|scripts/convert_ckpt_tp_to_fsdp.py:189:convert_tp_checkpoint_to_fsdp] Converting TP checkpoint to FSDP for experiment: CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain
+[05-11 07:41:52|CRITICAL|cosmos_transfer1/utils/distributed.py:63:init] [RANK 5]Initialized distributed training with local rank 5 with timeout 1800
+[05-11 07:41:54|INFO|cosmos_transfer1/utils/trainer.py:88:__init__] Config:
+* model:
+   * tokenizer: {'latent_ch': 16, 'is_bf16': True, 'spatial_compression_factor': 8, 'temporal_compression_factor': 8, 'pixel_chunk_duration': 121, 'max_enc_batch_size': 8, 'max_dec_batch_size': 4, 'spatial_resolution': '720', 'name': 'cosmos_1_0_diffusion_tokenizer', 'enc_fp': 'checkpoints/nvidia/Cosmos-Tokenize1-CV8x8x8-720p/encoder.jit', 'dec_fp': 'checkpoints/nvidia/Cosmos-Tokenize1-CV8x8x8-720p/decoder.jit', 'mean_std_fp': 'checkpoints/nvidia/Cosmos-Tokenize1-CV8x8x8-720p/mean_std.pt', '_target_': <class 'cosmos_transfer1.diffusion.training.modules.pretrained_vae.VideoJITTokenizer'>}
+   * conditioner: {'text': {'obj': {'_target_': <class 'cosmos_transfer1.diffusion.conditioner.TextAttr'>}, 'dropout_rate': 0.2, 'input_keys': ['t5_text_embeddings', 't5_text_mask']}, 'fps': {'obj': {'output_key': 'fps', 'dtype': None, '_target_': <class 'cosmos_transfer1.diffusion.config.base.conditioner.ReMapkey'>}, 'dropout_rate': 0.0, 'input_key': 'fps'}, 'num_frames': {'obj': {'output_key': 'num_frames', 'dtype': None, '_target_': <class 'cosmos_transfer1.diffusion.config.base.conditioner.ReMapkey'>}, 'dropout_rate': 0.0, 'input_key': 'num_frames'}, 'image_size': {'obj': {'output_key': 'image_size', 'dtype': None, '_target_': <class 'cosmos_transfer1.diffusion.config.base.conditioner.ReMapkey'>}, 'dropout_rate': 0.0, 'input_key': 'image_size'}, 'padding_mask': {'obj': {'output_key': 'padding_mask', 'dtype': None, '_target_': <class 'cosmos_transfer1.diffusion.config.base.conditioner.ReMapkey'>}, 'dropout_rate': 0.0, 'input_key': 'padding_mask'}, 'video_cond_bool': {'obj': {'output_key': 'video_cond_bool', '_target_': <class 'cosmos_transfer1.diffusion.config.base.conditioner.BooleanFlag'>}, 'dropout_rate': 0.0, 'input_key': 'fps', 'compute_loss_for_condition_region': False, 'condition_location': 'first_random_n', 'random_conditon_rate': 0.5, 'first_random_n_num_condition_t_max': 2, 'first_random_n_num_condition_t_min': 0, 'cfg_unconditional_type': 'zero_condition_region_condition_mask', 'apply_corruption_to_condition_region': 'noise_with_sigma', 'apply_corruption_to_condition_region_sigma_value': [0.001, 0.2, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5], 'condition_on_augment_sigma': False, 'augment_sigma_sample_p_mean': -3.0, 'augment_sigma_sample_p_std': 2.0, 'augment_sigma_sample_multiplier': 1.0, 'add_pose_condition': False, 'sample_tokens_start_from_p_or_i': False, 'normalize_condition_latent': False}, '_target_': <class 'cosmos_transfer1.diffusion.conditioner.VideoConditionerWithCtrl'>}
+   * net: {'concat_padding_mask': True, 'block_config': 'FA-CA-MLP', 'model_channels': 4096, 'num_blocks': 28, 'num_heads': 32, 'window_block_indexes': [], 'window_sizes': [], 'spatial_attn_win_size': 1, 'temporal_attn_win_size': 1, 'mlp_ratio': 4.0, 'use_memory_save': False, 'use_checkpoint': False, 'block_x_format': 'THWBD', 'crossattn_emb_channels': 1024, 'use_cross_attn_mask': False, 'pos_emb_cls': 'rope3d', 'pos_emb_learnable': True, 'pos_emb_interpolation': 'crop', 'min_fps': 1, 'max_fps': 30, 'additional_timestamp_channels': None, 'affline_emb_norm': True, 'use_adaln_lora': True, 'adaln_lora_dim': 256, 'layer_mask': None, 'legacy_patch_emb': False, 'rope_h_extrapolation_ratio': 1, 'rope_w_extrapolation_ratio': 1, 'rope_t_extrapolation_ratio': 2, 'extra_per_block_abs_pos_emb': True, 'extra_per_block_abs_pos_emb_type': 'learnable', 'extra_h_extrapolation_ratio': 1.0, 'extra_w_extrapolation_ratio': 1.0, 'extra_t_extrapolation_ratio': 1.0, 'max_img_h': 240, 'max_img_w': 240, 'max_frames': 128, 'in_channels': 17, 'out_channels': 16, 'patch_spatial': 2, 'patch_temporal': 1, '_target_': <class 'cosmos_transfer1.diffusion.training.networks.general_dit_video_conditioned.VideoExtendGeneralDIT'>, 'add_augment_sigma_embedding': False}
+   * sigma_data: 0.5
+   * precision: bfloat16
+   * input_data_key: video
+   * latent_shape: [16, 16, 88, 160]
+   * ema: {'enabled': True, 'model': None, 'rate': 0.1, 'num': 3, '_target_': <bound method PowerEMATracker.initialize_multi_rank_ema of <class 'cosmos_transfer1.utils.ema.PowerEMATracker'>>}
+   * sde: {'p_mean': 0.0, 'p_std': 1.0, 'sigma_max': 80, 'sigma_min': 0.0002, '_target_': <class 'cosmos_transfer1.diffusion.training.modules.edm_sde.EDMSDE'>}
+   * camera_sample_weight: {'enabled': False, 'weight': 5.0}
+   * aesthetic_finetuning: {'enabled': False}
+   * loss_mask_enabled: False
+   * loss_masking: None
+   * loss_add_logvar: True
+   * input_image_key: images_1024
+   * loss_reduce: mean
+   * loss_scale: 1.0
+   * fsdp_enabled: False
+   * use_torch_compile: False
+   * fsdp:
+      * policy: block
+      * checkpoint: False
+      * min_num_params: 1024
+      * sharding_group_size: 8
+      * sharding_strategy: full
+   * use_dummy_temporal_dim: False
+   * adjust_video_noise: True
+   * context_parallel_size: 1
+   * num_latents_to_drop: 0
+   * net_ctrl: {'concat_padding_mask': True, 'block_config': 'FA-CA-MLP', 'model_channels': 4096, 'num_blocks': 28, 'num_heads': 32, 'window_block_indexes': [], 'window_sizes': [], 'spatial_attn_win_size': 1, 'temporal_attn_win_size': 1, 'mlp_ratio': 4.0, 'use_memory_save': False, 'use_checkpoint': False, 'block_x_format': 'THWBD', 'crossattn_emb_channels': 1024, 'use_cross_attn_mask': False, 'pos_emb_cls': 'rope3d', 'pos_emb_learnable': True, 'pos_emb_interpolation': 'crop', 'min_fps': 1, 'max_fps': 30, 'additional_timestamp_channels': None, 'affline_emb_norm': True, 'use_adaln_lora': True, 'adaln_lora_dim': 256, 'layer_mask': [False, False, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True], 'legacy_patch_emb': False, 'rope_h_extrapolation_ratio': 1.0, 'rope_w_extrapolation_ratio': 1.0, 'rope_t_extrapolation_ratio': 1.0, 'extra_per_block_abs_pos_emb': True, 'extra_per_block_abs_pos_emb_type': 'learnable', 'extra_h_extrapolation_ratio': 1.0, 'extra_w_extrapolation_ratio': 1.0, 'extra_t_extrapolation_ratio': 1.0, 'max_img_h': 240, 'max_img_w': 240, 'max_frames': 128, 'in_channels': 17, 'out_channels': 16, 'patch_spatial': 2, 'patch_temporal': 1, '_target_': <class 'cosmos_transfer1.diffusion.training.networks.general_dit_ctrl_enc.GeneralDITEncoder'>, 'hint_channels': 128}
+   * hint_key: {'hint_key': 'control_input_vis', 'grayscale': False}
+   * base_load_from: {'load_path': 'checkpoints/nvidia/Cosmos-Transfer1-7B/checkpoints_tp/base_model_model_mp_*.pt'}
+   * finetune_base_model: False
+   * hint_mask: [True]
+   * hint_dropout_rate: 0.3
+   * num_control_blocks: 3
+   * random_drop_control_blocks: False
+   * pixel_corruptor: None
+* optimizer: {'optim_type': 'fusedadam', 'sharding': False, 'model': None, 'lr': 4.957595192603974e-05, 'weight_decay': 0.1, 'betas': [0.9, 0.99], 'eps': 1e-10, 'master_weights': True, 'capturable': True, '_target_': <function get_base_optimizer at 0x7cbdac721480>}
+* scheduler: {'verbosity_interval': 0, 'warm_up_steps': [2500], 'cycle_lengths': [10000000000000], 'f_start': [1e-06], 'f_max': [1.0], 'f_min': [1.0], '_target_': <class 'cosmos_transfer1.diffusion.training.functional.lr_scheduler.LambdaLinearScheduler'>}
+* dataloader_train: {'batch_size': 1, 'shuffle': None, 'sampler': {'dataset': {'hint_key': 'control_input_vis', 'is_train': True, 'dataset_dir': '/home/data/datasets/cosmos-posttrain-av', 'num_frames': 121, 'resolution': '720', '_target_': <class 'cosmos_transfer1.diffusion.datasets.example_transfer_dataset.ExampleTransferDataset'>}, '_target_': <function get_sampler at 0x7cbdac761b40>}, 'batch_sampler': None, 'num_workers': 8, 'collate_fn': None, 'pin_memory': True, 'drop_last': True, 'timeout': 0, 'worker_init_fn': None, 'multiprocessing_context': None, 'generator': None, 'prefetch_factor': 2, 'persistent_workers': False, 'pin_memory_device': '', 'in_order': True, 'dataset': {'hint_key': 'control_input_vis', 'is_train': True, 'dataset_dir': '/home/data/datasets/cosmos-posttrain-av', 'num_frames': 121, 'resolution': '720', '_target_': <class 'cosmos_transfer1.diffusion.datasets.example_transfer_dataset.ExampleTransferDataset'>}, '_target_': <class 'torch.utils.data.dataloader.DataLoader'>}
+* dataloader_val: {'batch_size': 1, 'shuffle': None, 'sampler': {'dataset': {'hint_key': 'control_input_vis', 'is_train': False, 'dataset_dir': '/home/data/datasets/cosmos-posttrain-av', 'num_frames': 121, 'resolution': '720', '_target_': <class 'cosmos_transfer1.diffusion.datasets.example_transfer_dataset.ExampleTransferDataset'>}, '_target_': <function get_sampler at 0x7cbdac761b40>}, 'batch_sampler': None, 'num_workers': 8, 'collate_fn': None, 'pin_memory': True, 'drop_last': True, 'timeout': 0, 'worker_init_fn': None, 'multiprocessing_context': None, 'generator': None, 'prefetch_factor': 2, 'persistent_workers': False, 'pin_memory_device': '', 'in_order': True, 'dataset': {'hint_key': 'control_input_vis', 'is_train': False, 'dataset_dir': '/home/data/datasets/cosmos-posttrain-av', 'num_frames': 121, 'resolution': '720', '_target_': <class 'cosmos_transfer1.diffusion.datasets.example_transfer_dataset.ExampleTransferDataset'>}, '_target_': <class 'torch.utils.data.dataloader.DataLoader'>}
+* job:
+   * project: cosmos_transfer1_posttrain
+   * group: CTRL_7Bv1_lvg
+   * name: CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain
+* trainer:
+   * type: <class 'cosmos_transfer1.utils.trainer.Trainer'>
+   * callbacks: {'progress_bar': {'config': None, 'trainer': None, '_target_': <class 'cosmos_transfer1.utils.callback.ProgressBarCallback'>}, 'grad_clip': {'fsdp_enabled': True, 'model_key': 'model', '_target_': <class 'cosmos_transfer1.diffusion.training.callbacks.grad_clip.GradClip'>}, 'low_prec': {'config': None, 'trainer': None, 'update_iter': 1, '_target_': <class 'cosmos_transfer1.diffusion.training.callbacks.low_precision.LowPrecisionCallback'>}, 'iter_speed': {'hit_thres': 1000, 'every_n': 200, '_target_': <class 'cosmos_transfer1.diffusion.training.callbacks.iter_speed.IterSpeed'>}}
+   * distributed_parallelism: ddp
+   * ddp:
+      * find_unused_parameters: False
+      * static_graph: True
+      * broadcast_buffers: True
+   * cudnn:
+      * deterministic: False
+      * benchmark: True
+   * seed: 0
+   * grad_scaler_args: {'enabled': False}
+   * max_iter: 999999999
+   * max_val_iter: None
+   * logging_iter: 200
+   * run_validation: False
+   * validation_iter: 100
+   * timeout_period: 999999999
+   * memory_format: torch.preserve_format
+   * grad_accum_iter: 1
+   * timestamp_seed: True
+* model_parallel: ModelParallelConfig(tensor_model_parallel_size=8, pipeline_model_parallel_size=1, virtual_pipeline_model_parallel_size=None, sequence_parallel=True, context_parallel_size=1, hierarchical_context_parallel_sizes=None, expert_model_parallel_size=1, expert_tensor_parallel_size=1, moe_extended_tp=False, perform_initialization=True, use_cpu_initialization=False, fp16=False, bf16=False, params_dtype=torch.float32, timers=None, finalize_model_grads_func=None, grad_scale_func=None, no_sync_func=None, grad_sync_func=None, param_sync_func=None, deterministic_mode=False, enable_autocast=False, autocast_dtype=torch.float32, num_microbatches_with_partial_activation_checkpoints=None, gradient_accumulation_fusion=False, async_tensor_model_parallel_allreduce=False, use_te_rng_tracker=False, tp_comm_overlap=False, tp_comm_bulk_wgrad=True, tp_comm_bulk_dgrad=True, tp_comm_overlap_ag=True, tp_comm_overlap_rs=True, tp_comm_overlap_rs_dgrad=False, tp_comm_split_ag=True, tp_comm_atomic_ag=False, tp_comm_split_rs=True, tp_comm_atomic_rs=False, cross_entropy_loss_fusion=False, tp_comm_overlap_disable_qkv=False, tp_comm_overlap_disable_fc1=False, tp_comm_bootstrap_backend='nccl', pipeline_dtype=None, variable_seq_lengths=False, overlap_p2p_comm=False, batch_p2p_comm=True, batch_p2p_sync=True, use_ring_exchange_p2p=False, deallocate_pipeline_outputs=False, defer_embedding_wgrad_compute=False, wgrad_deferral_limit=0, pipeline_model_parallel_split_rank=None, overlap_p2p_comm_warmup_flush=False, microbatch_group_size_per_vp_stage=1, cpu_offloading=False, cpu_offloading_num_layers=0, _cpu_offloading_context=None, cpu_offloading_activations=True, cpu_offloading_weights=True, barrier_with_L1_time=True)
+* defaults: ['_self_', {'data_train': None}, {'data_val': None}, {'optimizer': 'fusedadamw'}, {'scheduler': 'lambdalinear'}, {'callbacks': None}, {'net': None}, {'net_ctrl': None}, {'hint_key': 'control_input_edge'}, {'conditioner': 'ctrlnet_add_fps_image_size_padding_mask'}, {'pixel_corruptor': None}, {'fsdp': None}, {'ema': 'power'}, {'checkpoint': 'local'}, {'ckpt_klass': 'multi_rank'}, {'tokenizer': 'vae1'}, {'experiment': None}]
+* model_obj: {'config': None, '_target_': <class 'cosmos_transfer1.diffusion.training.models.model_ctrl.video_ctrlnet_decorator.<locals>.VideoDiffusionModelWithCtrlWrapper'>}
+* checkpoint:
+   * type: {'_target_': <class 'cosmos_transfer1.checkpointer.fast_tp.Checkpointer'>}
+   * dcp_async_mode_enabled: False
+   * save_iter: 1000
+   * load_path: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000100.pt
+   * load_training_state: False
+   * only_load_scheduler_state: False
+   * strict_resume: False
+   * verbose: True
+   * jit:
+      * enabled: False
+      * input_shape: None
+      * device: cuda
+      * dtype: bfloat16
+      * strict: True
+   * keys_not_to_resume: []
+   * broadcast_via_filesystem: True
+   * load_ema_to_reg: False
+[05-11 07:41:54|WARNING|cosmos_transfer1/utils/misc.py:148:print_environ_variables] Environment variable OUTPUT_ROOT not set!
+[05-11 07:41:54|INFO|cosmos_transfer1/utils/misc.py:160:set_random_seed] Using random seed 0.
+[05-11 07:41:54|CRITICAL|cosmos_transfer1/utils/callback.py:74:__init__] Instantiating callback progress_bar: {'config': None, 'trainer': None, '_target_': <class 'cosmos_transfer1.utils.callback.ProgressBarCallback'>}
+[05-11 07:41:54|CRITICAL|cosmos_transfer1/utils/callback.py:74:__init__] Instantiating callback grad_clip: {'fsdp_enabled': True, 'model_key': 'model', '_target_': <class 'cosmos_transfer1.diffusion.training.callbacks.grad_clip.GradClip'>}
+[05-11 07:41:54|CRITICAL|cosmos_transfer1/utils/callback.py:74:__init__] Instantiating callback low_prec: {'config': None, 'trainer': None, 'update_iter': 1, '_target_': <class 'cosmos_transfer1.diffusion.training.callbacks.low_precision.LowPrecisionCallback'>}
+[05-11 07:41:54|CRITICAL|cosmos_transfer1/utils/callback.py:74:__init__] Instantiating callback iter_speed: {'hit_thres': 1000, 'every_n': 200, '_target_': <class 'cosmos_transfer1.diffusion.training.callbacks.iter_speed.IterSpeed'>}
+[05-11 07:41:54|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:70:__init__] Broadcasting checkpoint data via the local filesystem.
+[05-11 07:41:54|WARNING|cosmos_transfer1/checkpointer/ddp_checkpointer.py:72:__init__] Strict resume mode is off. Some model parameters may not be loaded.
+[05-11 07:41:54|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 1][Parallelism Rank: DP-0, TP-1, CP-0]: Checkpointer Initialized.
+[05-11 07:41:54|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 0][Parallelism Rank: DP-0, TP-0, CP-0]: Checkpointer Initialized.
+[05-11 07:41:54|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 6][Parallelism Rank: DP-0, TP-6, CP-0]: Checkpointer Initialized.
+[05-11 07:41:54|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 4][Parallelism Rank: DP-0, TP-4, CP-0]: Checkpointer Initialized.
+[05-11 07:41:54|INFO|cosmos_transfer1/utils/misc.py:160:set_random_seed] Using random seed 0.
+[05-11 07:41:54|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 2][Parallelism Rank: DP-0, TP-2, CP-0]: Checkpointer Initialized.
+[05-11 07:41:54|INFO|cosmos_transfer1/utils/misc.py:160:set_random_seed] Using random seed 0.
+[05-11 07:41:54|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 3][Parallelism Rank: DP-0, TP-3, CP-0]: Checkpointer Initialized.
+[05-11 07:41:54|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 5][Parallelism Rank: DP-0, TP-5, CP-0]: Checkpointer Initialized.
+[05-11 07:41:54|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 7][Parallelism Rank: DP-0, TP-7, CP-0]: Checkpointer Initialized.
+[05-11 07:41:54|WARNING|cosmos_transfer1/diffusion/training/models/model_image.py:72:__init__] DiffusionModel: precision torch.bfloat16
+[05-11 07:41:55|CRITICAL|cosmos_transfer1/diffusion/training/models/model_image.py:96:__init__] Using mean loss reduce with loss scale 1.0
+[05-11 07:41:55|CRITICAL|cosmos_transfer1/diffusion/training/models/model_image.py:97:__init__] Enable loss masking: False
+[05-11 07:41:55|INFO|cosmos_transfer1/diffusion/training/models/model_ctrl.py:51:build_model] Start creating base model
+[05-11 07:41:55|CRITICAL|cosmos_transfer1/diffusion/training/networks/general_dit.py:424:build_pos_embed] Building positional embedding with rope3d class, impl <class 'cosmos_transfer1.diffusion.module.position_embedding.VideoRopePosition3DEmb'>
+[05-11 07:41:55|CRITICAL|cosmos_transfer1/diffusion/training/modules/blocks.py:55:__init__] Using AdaLN LoRA Flag: True. We enable bias if no AdaLN LoRA for backward compatibility.
+[05-11 07:41:57|CRITICAL|cosmos_transfer1/diffusion/training/networks/general_dit.py:267:__init__] Building affine embedding normalization layer
+[05-11 07:42:01|INFO|cosmos_transfer1/diffusion/training/networks/general_dit_video_conditioned.py:37:__init__] VideoExtendGeneralDIT in_channels: 17
+[05-11 07:42:01|INFO|cosmos_transfer1/diffusion/training/models/model_ctrl.py:113:load_base_model] Loading base model checkpoint (local): checkpoints/nvidia/Cosmos-Transfer1-7B/checkpoints_tp/base_model_model_mp_0.pt
+[05-11 07:42:08|SUCCESS|cosmos_transfer1/diffusion/training/models/model_ctrl.py:115:load_base_model] Complete loading base model checkpoint (local): checkpoints/nvidia/Cosmos-Transfer1-7B/checkpoints_tp/base_model_model_mp_0.pt
+[05-11 07:42:08|WARNING|cosmos_transfer1/diffusion/training/models/model_ctrl.py:123:load_base_model] Using non-EMA base model
+[05-11 07:42:08|INFO|cosmos_transfer1/diffusion/training/models/model_ctrl.py:133:load_base_model] Done loading the base model checkpoint.
+[05-11 07:42:09|INFO|cosmos_transfer1/diffusion/training/models/model_ctrl.py:56:build_model] Done creating base model
+[05-11 07:42:09|INFO|cosmos_transfer1/diffusion/training/models/model_ctrl.py:58:build_model] Start creating ctrlnet model
+[05-11 07:42:09|CRITICAL|cosmos_transfer1/diffusion/training/networks/general_dit.py:424:build_pos_embed] Building positional embedding with rope3d class, impl <class 'cosmos_transfer1.diffusion.module.position_embedding.VideoRopePosition3DEmb'>
+[05-11 07:42:09|CRITICAL|cosmos_transfer1/diffusion/training/modules/blocks.py:55:__init__] Using AdaLN LoRA Flag: True. We enable bias if no AdaLN LoRA for backward compatibility.
+[05-11 07:42:10|CRITICAL|cosmos_transfer1/diffusion/training/networks/general_dit.py:267:__init__] Building affine embedding normalization layer
+[05-11 07:42:12|INFO|cosmos_transfer1/diffusion/training/networks/general_dit_video_conditioned.py:37:__init__] VideoExtendGeneralDIT in_channels: 17
+[05-11 07:42:14|CRITICAL|cosmos_transfer1/utils/ema.py:297:initialize_multi_rank_ema] [RANK 2]using MCore parallel_state for EMA initialization. DP RANK: 0
+PowerEMATracker: rank 0, rate 0.1
+[05-11 07:42:14|CRITICAL|cosmos_transfer1/utils/ema.py:297:initialize_multi_rank_ema] [RANK 1]using MCore parallel_state for EMA initialization. DP RANK: 0
+PowerEMATracker: rank 0, rate 0.1
+[05-11 07:42:14|CRITICAL|cosmos_transfer1/utils/ema.py:297:initialize_multi_rank_ema] [RANK 3]using MCore parallel_state for EMA initialization. DP RANK: 0
+PowerEMATracker: rank 0, rate 0.1
+[05-11 07:42:14|CRITICAL|cosmos_transfer1/diffusion/training/models/model_ctrl.py:69:build_model] Only training ctrlnet model and keeping base model frozen
+[05-11 07:42:14|INFO|cosmos_transfer1/diffusion/training/models/model_ctrl.py:72:build_model] Done creating ctrlnet model
+[05-11 07:42:14|CRITICAL|cosmos_transfer1/utils/ema.py:297:initialize_multi_rank_ema] [RANK 0]using MCore parallel_state for EMA initialization. DP RANK: 0
+[05-11 07:42:14|WARNING|cosmos_transfer1/utils/ema.py:298:initialize_multi_rank_ema] It should not used together with FSDP!
+PowerEMATracker: rank 0, rate 0.1
+[05-11 07:42:14|INFO|cosmos_transfer1/utils/misc.py:160:set_random_seed] Using random seed 0.
+[05-11 07:42:14|CRITICAL|cosmos_transfer1/utils/ema.py:297:initialize_multi_rank_ema] [RANK 4]using MCore parallel_state for EMA initialization. DP RANK: 0
+PowerEMATracker: rank 0, rate 0.1
+[05-11 07:42:14|CRITICAL|cosmos_transfer1/utils/ema.py:297:initialize_multi_rank_ema] [RANK 6]using MCore parallel_state for EMA initialization. DP RANK: 0
+PowerEMATracker: rank 0, rate 0.1
+[05-11 07:42:14|CRITICAL|cosmos_transfer1/utils/ema.py:297:initialize_multi_rank_ema] [RANK 5]using MCore parallel_state for EMA initialization. DP RANK: 0
+PowerEMATracker: rank 0, rate 0.1
+[05-11 07:42:14|CRITICAL|cosmos_transfer1/utils/ema.py:297:initialize_multi_rank_ema] [RANK 7]using MCore parallel_state for EMA initialization. DP RANK: 0
+PowerEMATracker: rank 0, rate 0.1
+[05-11 07:42:14|CRITICAL|cosmos_transfer1/diffusion/training/utils/optim_instantiate.py:50:get_base_optimizer] total num parameters : 254,914,336
+[05-11 07:42:14|WARNING|cosmos_transfer1/utils/fused_adam.py:102:__init__] FusedAdam master_weights: True capturable: True
+[05-11 07:42:14|INFO|scripts/convert_ckpt_tp_to_fsdp.py:225:convert_tp_checkpoint_to_fsdp] Loading checkpoint...
+[05-11 07:42:19|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 2][Parallelism Rank: DP-0, TP-2, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500_model_mp_2.pt
+[05-11 07:42:19|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 3][Parallelism Rank: DP-0, TP-3, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500_model_mp_3.pt
+[05-11 07:42:19|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 0][Parallelism Rank: DP-0, TP-0, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500_model_mp_0.pt
+[05-11 07:42:19|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 4][Parallelism Rank: DP-0, TP-4, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500_model_mp_4.pt
+[05-11 07:42:19|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 5][Parallelism Rank: DP-0, TP-5, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500_model_mp_5.pt
+[05-11 07:42:19|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 6][Parallelism Rank: DP-0, TP-6, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500_model_mp_6.pt
+[05-11 07:42:19|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 7][Parallelism Rank: DP-0, TP-7, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500_model_mp_7.pt
+[05-11 07:42:21|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 2][Parallelism Rank: DP-0, TP-2, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500_optim_mp_2.pt
+[05-11 07:42:21|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 2][Parallelism Rank: DP-0, TP-2, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500_scheduler_mp_2.pt
+[05-11 07:42:21|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 2][Parallelism Rank: DP-0, TP-2, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500.pt
+[05-11 07:42:21|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 0][Parallelism Rank: DP-0, TP-0, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500_optim_mp_0.pt
+[05-11 07:42:21|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 0][Parallelism Rank: DP-0, TP-0, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500_scheduler_mp_0.pt
+[05-11 07:42:21|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 0][Parallelism Rank: DP-0, TP-0, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500.pt
+[05-11 07:42:22|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 5][Parallelism Rank: DP-0, TP-5, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500_optim_mp_5.pt
+[05-11 07:42:22|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 5][Parallelism Rank: DP-0, TP-5, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500_scheduler_mp_5.pt
+[05-11 07:42:22|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 6][Parallelism Rank: DP-0, TP-6, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500_optim_mp_6.pt
+[05-11 07:42:22|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 6][Parallelism Rank: DP-0, TP-6, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500_scheduler_mp_6.pt
+[05-11 07:42:22|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 6][Parallelism Rank: DP-0, TP-6, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500.pt
+[05-11 07:42:22|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 5][Parallelism Rank: DP-0, TP-5, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500.pt
+[05-11 07:42:23|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 3][Parallelism Rank: DP-0, TP-3, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500_optim_mp_3.pt
+[05-11 07:42:23|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 3][Parallelism Rank: DP-0, TP-3, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500_scheduler_mp_3.pt
+[05-11 07:42:23|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 3][Parallelism Rank: DP-0, TP-3, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500.pt
+[05-11 07:42:24|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 4][Parallelism Rank: DP-0, TP-4, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500_optim_mp_4.pt
+[05-11 07:42:24|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 4][Parallelism Rank: DP-0, TP-4, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500_scheduler_mp_4.pt
+[05-11 07:42:24|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 4][Parallelism Rank: DP-0, TP-4, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500.pt
+[05-11 07:42:24|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 7][Parallelism Rank: DP-0, TP-7, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500_optim_mp_7.pt
+[05-11 07:42:24|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 7][Parallelism Rank: DP-0, TP-7, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500_scheduler_mp_7.pt
+[05-11 07:42:24|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 7][Parallelism Rank: DP-0, TP-7, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500.pt
+[05-11 07:42:45|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 1][Parallelism Rank: DP-0, TP-1, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500_model_mp_1.pt
+[05-11 07:42:47|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 1][Parallelism Rank: DP-0, TP-1, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500_optim_mp_1.pt
+[05-11 07:42:47|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 1][Parallelism Rank: DP-0, TP-1, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500_scheduler_mp_1.pt
+[05-11 07:42:47|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 1][Parallelism Rank: DP-0, TP-1, CP-0]: Loaded checkpoint from: checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500.pt
+[05-11 07:42:47|CRITICAL|cosmos_transfer1/checkpointer/ddp_checkpointer.py:391:load] [RANK 1]dict_keys(['model', 'optim', 'scheduler', 'trainer'])
+[05-11 07:42:47|CRITICAL|cosmos_transfer1/checkpointer/ddp_checkpointer.py:392:load] [RANK 1]{'grad_scaler': {}, 'iteration': 500}
+[05-11 07:42:47|CRITICAL|cosmos_transfer1/checkpointer/ddp_checkpointer.py:391:load] [RANK 7]dict_keys(['model', 'optim', 'scheduler', 'trainer'])
+[05-11 07:42:47|CRITICAL|cosmos_transfer1/checkpointer/ddp_checkpointer.py:391:load] [RANK 6]dict_keys(['model', 'optim', 'scheduler', 'trainer'])
+[05-11 07:42:47|CRITICAL|cosmos_transfer1/checkpointer/ddp_checkpointer.py:391:load] [RANK 3]dict_keys(['model', 'optim', 'scheduler', 'trainer'])
+[05-11 07:42:47|CRITICAL|cosmos_transfer1/checkpointer/ddp_checkpointer.py:392:load] [RANK 7]{'grad_scaler': {}, 'iteration': 500}
+[05-11 07:42:47|CRITICAL|cosmos_transfer1/checkpointer/ddp_checkpointer.py:391:load] [RANK 0]dict_keys(['model', 'optim', 'scheduler', 'trainer'])
+[05-11 07:42:47|CRITICAL|cosmos_transfer1/checkpointer/ddp_checkpointer.py:392:load] [RANK 6]{'grad_scaler': {}, 'iteration': 500}
+[05-11 07:42:47|CRITICAL|cosmos_transfer1/checkpointer/ddp_checkpointer.py:391:load] [RANK 4]dict_keys(['model', 'optim', 'scheduler', 'trainer'])
+[05-11 07:42:47|CRITICAL|cosmos_transfer1/checkpointer/ddp_checkpointer.py:392:load] [RANK 3]{'grad_scaler': {}, 'iteration': 500}
+[05-11 07:42:47|CRITICAL|cosmos_transfer1/checkpointer/ddp_checkpointer.py:392:load] [RANK 0]{'grad_scaler': {}, 'iteration': 500}
+[05-11 07:42:47|CRITICAL|cosmos_transfer1/checkpointer/ddp_checkpointer.py:391:load] [RANK 5]dict_keys(['model', 'optim', 'scheduler', 'trainer'])
+[05-11 07:42:47|CRITICAL|cosmos_transfer1/checkpointer/ddp_checkpointer.py:391:load] [RANK 2]dict_keys(['model', 'optim', 'scheduler', 'trainer'])
+[05-11 07:42:47|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:393:load] - Loading the gradient scaler...
+[05-11 07:42:47|CRITICAL|cosmos_transfer1/checkpointer/ddp_checkpointer.py:392:load] [RANK 4]{'grad_scaler': {}, 'iteration': 500}
+[05-11 07:42:47|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:400:load] - Loading the optimizer...
+[05-11 07:42:47|CRITICAL|cosmos_transfer1/checkpointer/ddp_checkpointer.py:392:load] [RANK 5]{'grad_scaler': {}, 'iteration': 500}
+[05-11 07:42:47|CRITICAL|cosmos_transfer1/checkpointer/ddp_checkpointer.py:392:load] [RANK 2]{'grad_scaler': {}, 'iteration': 500}
+[05-11 07:42:47|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:405:load] - Loading the scheduler...
+[05-11 07:42:47|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:410:load] - Loading the model...
+[05-11 07:42:47|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:415:load] 	 Strict resume mode is off.
+[05-11 07:42:47|CRITICAL|cosmos_transfer1/diffusion/training/models/model_image.py:607:load_state_dict] load model in non-strict mode
+[05-11 07:42:48|CRITICAL|cosmos_transfer1/diffusion/training/models/model_image.py:608:load_state_dict] [RANK 2]_IncompatibleKeys(missing_keys=[], unexpected_keys=[], incorrect_shapes=[])
+[05-11 07:42:48|CRITICAL|cosmos_transfer1/diffusion/training/models/model_image.py:608:load_state_dict] [RANK 3]_IncompatibleKeys(missing_keys=[], unexpected_keys=[], incorrect_shapes=[])
+[05-11 07:42:48|CRITICAL|cosmos_transfer1/diffusion/training/models/model_image.py:608:load_state_dict] [RANK 1]_IncompatibleKeys(missing_keys=[], unexpected_keys=[], incorrect_shapes=[])
+[05-11 07:42:48|CRITICAL|cosmos_transfer1/diffusion/training/models/model_image.py:608:load_state_dict] [RANK 6]_IncompatibleKeys(missing_keys=[], unexpected_keys=[], incorrect_shapes=[])
+[05-11 07:42:48|CRITICAL|cosmos_transfer1/diffusion/training/models/model_image.py:608:load_state_dict] [RANK 7]_IncompatibleKeys(missing_keys=[], unexpected_keys=[], incorrect_shapes=[])
+[05-11 07:42:48|CRITICAL|cosmos_transfer1/diffusion/training/models/model_image.py:608:load_state_dict] [RANK 5]_IncompatibleKeys(missing_keys=[], unexpected_keys=[], incorrect_shapes=[])
+[05-11 07:42:48|CRITICAL|cosmos_transfer1/diffusion/training/models/model_image.py:608:load_state_dict] [RANK 4]_IncompatibleKeys(missing_keys=[], unexpected_keys=[], incorrect_shapes=[])
+[05-11 07:42:48|CRITICAL|cosmos_transfer1/diffusion/training/models/model_image.py:608:load_state_dict] [RANK 0]_IncompatibleKeys(missing_keys=[], unexpected_keys=[], incorrect_shapes=[])
+[05-11 07:42:48|CRITICAL|cosmos_transfer1/diffusion/training/models/model_image.py:610:load_state_dict] load ema model in non-strict mode
+[05-11 07:42:48|CRITICAL|cosmos_transfer1/diffusion/training/models/model_image.py:611:load_state_dict] [RANK 2]_IncompatibleKeys(missing_keys=[], unexpected_keys=[], incorrect_shapes=[])
+[05-11 07:42:48|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 2][Parallelism Rank: DP-0, TP-2, CP-0]: Loaded checkpoint from checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500.pt in iteration 500
+[05-11 07:42:48|CRITICAL|cosmos_transfer1/diffusion/training/models/model_image.py:611:load_state_dict] [RANK 1]_IncompatibleKeys(missing_keys=[], unexpected_keys=[], incorrect_shapes=[])
+[05-11 07:42:48|CRITICAL|cosmos_transfer1/diffusion/training/models/model_image.py:611:load_state_dict] [RANK 3]_IncompatibleKeys(missing_keys=[], unexpected_keys=[], incorrect_shapes=[])
+[05-11 07:42:48|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 3][Parallelism Rank: DP-0, TP-3, CP-0]: Loaded checkpoint from checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500.pt in iteration 500
+[05-11 07:42:48|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 1][Parallelism Rank: DP-0, TP-1, CP-0]: Loaded checkpoint from checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500.pt in iteration 500
+[05-11 07:42:48|CRITICAL|cosmos_transfer1/diffusion/training/models/model_image.py:611:load_state_dict] [RANK 6]_IncompatibleKeys(missing_keys=[], unexpected_keys=[], incorrect_shapes=[])
+[05-11 07:42:48|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 6][Parallelism Rank: DP-0, TP-6, CP-0]: Loaded checkpoint from checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500.pt in iteration 500
+[05-11 07:42:48|CRITICAL|cosmos_transfer1/diffusion/training/models/model_image.py:611:load_state_dict] [RANK 7]_IncompatibleKeys(missing_keys=[], unexpected_keys=[], incorrect_shapes=[])
+[05-11 07:42:48|CRITICAL|cosmos_transfer1/diffusion/training/models/model_image.py:611:load_state_dict] [RANK 5]_IncompatibleKeys(missing_keys=[], unexpected_keys=[], incorrect_shapes=[])
+[05-11 07:42:48|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 7][Parallelism Rank: DP-0, TP-7, CP-0]: Loaded checkpoint from checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500.pt in iteration 500
+[05-11 07:42:48|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 5][Parallelism Rank: DP-0, TP-5, CP-0]: Loaded checkpoint from checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500.pt in iteration 500
+[05-11 07:42:48|CRITICAL|cosmos_transfer1/diffusion/training/models/model_image.py:611:load_state_dict] [RANK 4]_IncompatibleKeys(missing_keys=[], unexpected_keys=[], incorrect_shapes=[])
+[05-11 07:42:48|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 4][Parallelism Rank: DP-0, TP-4, CP-0]: Loaded checkpoint from checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500.pt in iteration 500
+[05-11 07:42:48|CRITICAL|cosmos_transfer1/diffusion/training/models/model_image.py:611:load_state_dict] [RANK 0]_IncompatibleKeys(missing_keys=[], unexpected_keys=[], incorrect_shapes=[])
+[05-11 07:42:48|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:417:load] 	 None
+[05-11 07:42:48|INFO|cosmos_transfer1/checkpointer/ddp_checkpointer.py:92:print] [RANK 0][Parallelism Rank: DP-0, TP-0, CP-0]: Loaded checkpoint from checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/checkpoints/iter_000000500.pt in iteration 500
+[05-11 07:42:49|CRITICAL|cosmos_transfer1/utils/trainer.py:62:__init__] Using deprecated config.model.context_parallel_size. Please use config.model_parallel.context_parallel_size instead.
+[05-11 07:42:50|INFO|cosmos_transfer1/utils/trainer.py:88:__init__] Config:
+* model:
+   * tokenizer: {'latent_ch': 16, 'is_bf16': True, 'spatial_compression_factor': 8, 'temporal_compression_factor': 8, 'pixel_chunk_duration': 121, 'max_enc_batch_size': 8, 'max_dec_batch_size': 4, 'spatial_resolution': '720', 'name': 'cosmos_1_0_diffusion_tokenizer', 'enc_fp': 'checkpoints/nvidia/Cosmos-Tokenize1-CV8x8x8-720p/encoder.jit', 'dec_fp': 'checkpoints/nvidia/Cosmos-Tokenize1-CV8x8x8-720p/decoder.jit', 'mean_std_fp': 'checkpoints/nvidia/Cosmos-Tokenize1-CV8x8x8-720p/mean_std.pt', '_target_': <class 'cosmos_transfer1.diffusion.training.modules.pretrained_vae.VideoJITTokenizer'>}
+   * conditioner: {'text': {'obj': {'_target_': <class 'cosmos_transfer1.diffusion.conditioner.TextAttr'>}, 'dropout_rate': 0.2, 'input_keys': ['t5_text_embeddings', 't5_text_mask']}, 'fps': {'obj': {'output_key': 'fps', 'dtype': None, '_target_': <class 'cosmos_transfer1.diffusion.config.base.conditioner.ReMapkey'>}, 'dropout_rate': 0.0, 'input_key': 'fps'}, 'num_frames': {'obj': {'output_key': 'num_frames', 'dtype': None, '_target_': <class 'cosmos_transfer1.diffusion.config.base.conditioner.ReMapkey'>}, 'dropout_rate': 0.0, 'input_key': 'num_frames'}, 'image_size': {'obj': {'output_key': 'image_size', 'dtype': None, '_target_': <class 'cosmos_transfer1.diffusion.config.base.conditioner.ReMapkey'>}, 'dropout_rate': 0.0, 'input_key': 'image_size'}, 'padding_mask': {'obj': {'output_key': 'padding_mask', 'dtype': None, '_target_': <class 'cosmos_transfer1.diffusion.config.base.conditioner.ReMapkey'>}, 'dropout_rate': 0.0, 'input_key': 'padding_mask'}, 'video_cond_bool': {'obj': {'output_key': 'video_cond_bool', '_target_': <class 'cosmos_transfer1.diffusion.config.base.conditioner.BooleanFlag'>}, 'dropout_rate': 0.0, 'input_key': 'fps', 'compute_loss_for_condition_region': False, 'condition_location': 'first_random_n', 'random_conditon_rate': 0.5, 'first_random_n_num_condition_t_max': 2, 'first_random_n_num_condition_t_min': 0, 'cfg_unconditional_type': 'zero_condition_region_condition_mask', 'apply_corruption_to_condition_region': 'noise_with_sigma', 'apply_corruption_to_condition_region_sigma_value': [0.001, 0.2, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5], 'condition_on_augment_sigma': False, 'augment_sigma_sample_p_mean': -3.0, 'augment_sigma_sample_p_std': 2.0, 'augment_sigma_sample_multiplier': 1.0, 'add_pose_condition': False, 'sample_tokens_start_from_p_or_i': False, 'normalize_condition_latent': False}, '_target_': <class 'cosmos_transfer1.diffusion.conditioner.VideoConditionerWithCtrl'>}
+   * net: {'concat_padding_mask': True, 'block_config': 'FA-CA-MLP', 'model_channels': 4096, 'num_blocks': 28, 'num_heads': 32, 'window_block_indexes': [], 'window_sizes': [], 'spatial_attn_win_size': 1, 'temporal_attn_win_size': 1, 'mlp_ratio': 4.0, 'use_memory_save': False, 'use_checkpoint': False, 'block_x_format': 'THWBD', 'crossattn_emb_channels': 1024, 'use_cross_attn_mask': False, 'pos_emb_cls': 'rope3d', 'pos_emb_learnable': True, 'pos_emb_interpolation': 'crop', 'min_fps': 1, 'max_fps': 30, 'additional_timestamp_channels': None, 'affline_emb_norm': True, 'use_adaln_lora': True, 'adaln_lora_dim': 256, 'layer_mask': None, 'legacy_patch_emb': False, 'rope_h_extrapolation_ratio': 1, 'rope_w_extrapolation_ratio': 1, 'rope_t_extrapolation_ratio': 2, 'extra_per_block_abs_pos_emb': True, 'extra_per_block_abs_pos_emb_type': 'learnable', 'extra_h_extrapolation_ratio': 1.0, 'extra_w_extrapolation_ratio': 1.0, 'extra_t_extrapolation_ratio': 1.0, 'max_img_h': 240, 'max_img_w': 240, 'max_frames': 128, 'in_channels': 17, 'out_channels': 16, 'patch_spatial': 2, 'patch_temporal': 1, '_target_': <class 'cosmos_transfer1.diffusion.training.networks.general_dit_video_conditioned.VideoExtendGeneralDIT'>, 'add_augment_sigma_embedding': False}
+   * sigma_data: 0.5
+   * precision: bfloat16
+   * input_data_key: video
+   * latent_shape: [16, 16, 88, 160]
+   * ema: {'enabled': True, 'model': None, 'rate': 0.1, 'num': 3, '_target_': <bound method PowerEMATracker.initialize_multi_rank_ema of <class 'cosmos_transfer1.utils.ema.PowerEMATracker'>>}
+   * sde: {'p_mean': 0.0, 'p_std': 1.0, 'sigma_max': 80, 'sigma_min': 0.0002, '_target_': <class 'cosmos_transfer1.diffusion.training.modules.edm_sde.EDMSDE'>}
+   * camera_sample_weight: {'enabled': False, 'weight': 5.0}
+   * aesthetic_finetuning: {'enabled': False}
+   * loss_mask_enabled: False
+   * loss_masking: None
+   * loss_add_logvar: True
+   * input_image_key: images_1024
+   * loss_reduce: mean
+   * loss_scale: 1.0
+   * fsdp_enabled: False
+   * use_torch_compile: False
+   * fsdp:
+      * policy: block
+      * checkpoint: False
+      * min_num_params: 1024
+      * sharding_group_size: 8
+      * sharding_strategy: full
+   * use_dummy_temporal_dim: False
+   * adjust_video_noise: True
+   * context_parallel_size: 1
+   * num_latents_to_drop: 0
+   * net_ctrl: {'concat_padding_mask': True, 'block_config': 'FA-CA-MLP', 'model_channels': 4096, 'num_blocks': 28, 'num_heads': 32, 'window_block_indexes': [], 'window_sizes': [], 'spatial_attn_win_size': 1, 'temporal_attn_win_size': 1, 'mlp_ratio': 4.0, 'use_memory_save': False, 'use_checkpoint': False, 'block_x_format': 'THWBD', 'crossattn_emb_channels': 1024, 'use_cross_attn_mask': False, 'pos_emb_cls': 'rope3d', 'pos_emb_learnable': True, 'pos_emb_interpolation': 'crop', 'min_fps': 1, 'max_fps': 30, 'additional_timestamp_channels': None, 'affline_emb_norm': True, 'use_adaln_lora': True, 'adaln_lora_dim': 256, 'layer_mask': [False, False, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True], 'legacy_patch_emb': False, 'rope_h_extrapolation_ratio': 1.0, 'rope_w_extrapolation_ratio': 1.0, 'rope_t_extrapolation_ratio': 1.0, 'extra_per_block_abs_pos_emb': True, 'extra_per_block_abs_pos_emb_type': 'learnable', 'extra_h_extrapolation_ratio': 1.0, 'extra_w_extrapolation_ratio': 1.0, 'extra_t_extrapolation_ratio': 1.0, 'max_img_h': 240, 'max_img_w': 240, 'max_frames': 128, 'in_channels': 17, 'out_channels': 16, 'patch_spatial': 2, 'patch_temporal': 1, '_target_': <class 'cosmos_transfer1.diffusion.training.networks.general_dit_ctrl_enc.GeneralDITEncoder'>, 'hint_channels': 128}
+   * hint_key: {'hint_key': 'control_input_vis', 'grayscale': False}
+   * base_load_from: {'load_path': 'checkpoints/nvidia/Cosmos-Transfer1-7B/checkpoints_tp/base_model_model_mp_*.pt'}
+   * finetune_base_model: False
+   * hint_mask: [True]
+   * hint_dropout_rate: 0.3
+   * num_control_blocks: 3
+   * random_drop_control_blocks: False
+   * pixel_corruptor: None
+* optimizer: {'optim_type': 'fusedadam', 'sharding': False, 'model': None, 'lr': 4.957595192603974e-05, 'weight_decay': 0.1, 'betas': [0.9, 0.99], 'eps': 1e-10, 'master_weights': True, 'capturable': True, '_target_': <function get_base_optimizer at 0x7cbdac721480>}
+* scheduler: {'verbosity_interval': 0, 'warm_up_steps': [2500], 'cycle_lengths': [10000000000000], 'f_start': [1e-06], 'f_max': [1.0], 'f_min': [1.0], '_target_': <class 'cosmos_transfer1.diffusion.training.functional.lr_scheduler.LambdaLinearScheduler'>}
+* dataloader_train: {'batch_size': 1, 'shuffle': None, 'sampler': {'dataset': {'hint_key': 'control_input_vis', 'is_train': True, 'dataset_dir': '/home/data/datasets/cosmos-posttrain-av', 'num_frames': 121, 'resolution': '720', '_target_': <class 'cosmos_transfer1.diffusion.datasets.example_transfer_dataset.ExampleTransferDataset'>}, '_target_': <function get_sampler at 0x7cbdac761b40>}, 'batch_sampler': None, 'num_workers': 8, 'collate_fn': None, 'pin_memory': True, 'drop_last': True, 'timeout': 0, 'worker_init_fn': None, 'multiprocessing_context': None, 'generator': None, 'prefetch_factor': 2, 'persistent_workers': False, 'pin_memory_device': '', 'in_order': True, 'dataset': {'hint_key': 'control_input_vis', 'is_train': True, 'dataset_dir': '/home/data/datasets/cosmos-posttrain-av', 'num_frames': 121, 'resolution': '720', '_target_': <class 'cosmos_transfer1.diffusion.datasets.example_transfer_dataset.ExampleTransferDataset'>}, '_target_': <class 'torch.utils.data.dataloader.DataLoader'>}
+* dataloader_val: {'batch_size': 1, 'shuffle': None, 'sampler': {'dataset': {'hint_key': 'control_input_vis', 'is_train': False, 'dataset_dir': '/home/data/datasets/cosmos-posttrain-av', 'num_frames': 121, 'resolution': '720', '_target_': <class 'cosmos_transfer1.diffusion.datasets.example_transfer_dataset.ExampleTransferDataset'>}, '_target_': <function get_sampler at 0x7cbdac761b40>}, 'batch_sampler': None, 'num_workers': 8, 'collate_fn': None, 'pin_memory': True, 'drop_last': True, 'timeout': 0, 'worker_init_fn': None, 'multiprocessing_context': None, 'generator': None, 'prefetch_factor': 2, 'persistent_workers': False, 'pin_memory_device': '', 'in_order': True, 'dataset': {'hint_key': 'control_input_vis', 'is_train': False, 'dataset_dir': '/home/data/datasets/cosmos-posttrain-av', 'num_frames': 121, 'resolution': '720', '_target_': <class 'cosmos_transfer1.diffusion.datasets.example_transfer_dataset.ExampleTransferDataset'>}, '_target_': <class 'torch.utils.data.dataloader.DataLoader'>}
+* job:
+   * project: cosmos_transfer1_posttrain
+   * group: CTRL_7Bv1_lvg
+   * name: CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain
+* trainer:
+   * type: <class 'cosmos_transfer1.utils.trainer.Trainer'>
+   * callbacks: {'progress_bar': {'config': None, 'trainer': None, '_target_': <class 'cosmos_transfer1.utils.callback.ProgressBarCallback'>}, 'grad_clip': {'fsdp_enabled': True, 'model_key': 'model', '_target_': <class 'cosmos_transfer1.diffusion.training.callbacks.grad_clip.GradClip'>}, 'low_prec': {'config': None, 'trainer': None, 'update_iter': 1, '_target_': <class 'cosmos_transfer1.diffusion.training.callbacks.low_precision.LowPrecisionCallback'>}, 'iter_speed': {'hit_thres': 1000, 'every_n': 200, '_target_': <class 'cosmos_transfer1.diffusion.training.callbacks.iter_speed.IterSpeed'>}}
+   * distributed_parallelism: ddp
+   * ddp:
+      * find_unused_parameters: False
+      * static_graph: True
+      * broadcast_buffers: True
+   * cudnn:
+      * deterministic: False
+      * benchmark: True
+   * seed: 0
+   * grad_scaler_args: {'enabled': False}
+   * max_iter: 999999999
+   * max_val_iter: None
+   * logging_iter: 200
+   * run_validation: False
+   * validation_iter: 100
+   * timeout_period: 999999999
+   * memory_format: torch.preserve_format
+   * grad_accum_iter: 1
+   * timestamp_seed: True
+* model_parallel: ModelParallelConfig(tensor_model_parallel_size=1, pipeline_model_parallel_size=1, virtual_pipeline_model_parallel_size=None, sequence_parallel=False, context_parallel_size=1, hierarchical_context_parallel_sizes=None, expert_model_parallel_size=1, expert_tensor_parallel_size=1, moe_extended_tp=False, perform_initialization=True, use_cpu_initialization=False, fp16=False, bf16=False, params_dtype=torch.float32, timers=None, finalize_model_grads_func=None, grad_scale_func=None, no_sync_func=None, grad_sync_func=None, param_sync_func=None, deterministic_mode=False, enable_autocast=False, autocast_dtype=torch.float32, num_microbatches_with_partial_activation_checkpoints=None, gradient_accumulation_fusion=False, async_tensor_model_parallel_allreduce=False, use_te_rng_tracker=False, tp_comm_overlap=False, tp_comm_bulk_wgrad=True, tp_comm_bulk_dgrad=True, tp_comm_overlap_ag=True, tp_comm_overlap_rs=True, tp_comm_overlap_rs_dgrad=False, tp_comm_split_ag=True, tp_comm_atomic_ag=False, tp_comm_split_rs=True, tp_comm_atomic_rs=False, cross_entropy_loss_fusion=False, tp_comm_overlap_disable_qkv=False, tp_comm_overlap_disable_fc1=False, tp_comm_bootstrap_backend='nccl', pipeline_dtype=None, variable_seq_lengths=False, overlap_p2p_comm=False, batch_p2p_comm=True, batch_p2p_sync=True, use_ring_exchange_p2p=False, deallocate_pipeline_outputs=False, defer_embedding_wgrad_compute=False, wgrad_deferral_limit=0, pipeline_model_parallel_split_rank=None, overlap_p2p_comm_warmup_flush=False, microbatch_group_size_per_vp_stage=1, cpu_offloading=False, cpu_offloading_num_layers=0, _cpu_offloading_context=None, cpu_offloading_activations=True, cpu_offloading_weights=True, barrier_with_L1_time=True)
+* defaults: ['_self_', {'data_train': None}, {'data_val': None}, {'optimizer': 'fusedadamw'}, {'scheduler': 'lambdalinear'}, {'callbacks': None}, {'net': None}, {'net_ctrl': None}, {'hint_key': 'control_input_edge'}, {'conditioner': 'ctrlnet_add_fps_image_size_padding_mask'}, {'pixel_corruptor': None}, {'fsdp': None}, {'ema': 'power'}, {'checkpoint': 'local'}, {'ckpt_klass': 'multi_rank'}, {'tokenizer': 'vae1'}, {'experiment': None}]
+* model_obj: {'config': None, '_target_': <class 'cosmos_transfer1.diffusion.training.models.model_ctrl.video_ctrlnet_decorator.<locals>.VideoDiffusionModelWithCtrlWrapper'>}
+* checkpoint:
+   * type: {'_target_': <class 'cosmos_transfer1.checkpointer.multi_rank_checkpointer.MultiRankCheckpointer'>}
+   * dcp_async_mode_enabled: False
+   * save_iter: 1000
+   * load_path: 
+   * load_training_state: False
+   * only_load_scheduler_state: False
+   * strict_resume: False
+   * verbose: True
+   * jit:
+      * enabled: False
+      * input_shape: None
+      * device: cuda
+      * dtype: bfloat16
+      * strict: True
+   * keys_not_to_resume: []
+   * broadcast_via_filesystem: True
+   * load_ema_to_reg: False
+[05-11 07:42:50|WARNING|cosmos_transfer1/utils/misc.py:148:print_environ_variables] Environment variable OUTPUT_ROOT not set!
+[05-11 07:42:50|INFO|cosmos_transfer1/utils/misc.py:160:set_random_seed] Using random seed 0.
+[05-11 07:42:50|CRITICAL|cosmos_transfer1/utils/callback.py:74:__init__] Instantiating callback progress_bar: {'config': None, 'trainer': None, '_target_': <class 'cosmos_transfer1.utils.callback.ProgressBarCallback'>}
+[05-11 07:42:50|CRITICAL|cosmos_transfer1/utils/callback.py:74:__init__] Instantiating callback grad_clip: {'fsdp_enabled': True, 'model_key': 'model', '_target_': <class 'cosmos_transfer1.diffusion.training.callbacks.grad_clip.GradClip'>}
+[05-11 07:42:50|CRITICAL|cosmos_transfer1/utils/callback.py:74:__init__] Instantiating callback low_prec: {'config': None, 'trainer': None, 'update_iter': 1, '_target_': <class 'cosmos_transfer1.diffusion.training.callbacks.low_precision.LowPrecisionCallback'>}
+[05-11 07:42:50|CRITICAL|cosmos_transfer1/utils/callback.py:74:__init__] Instantiating callback iter_speed: {'hit_thres': 1000, 'every_n': 200, '_target_': <class 'cosmos_transfer1.diffusion.training.callbacks.iter_speed.IterSpeed'>}
+[05-11 07:42:50|INFO|cosmos_transfer1/utils/misc.py:160:set_random_seed] Using random seed 0.
+[05-11 07:42:50|WARNING|cosmos_transfer1/diffusion/training/models/model_image.py:72:__init__] DiffusionModel: precision torch.bfloat16
+[05-11 07:42:50|CRITICAL|cosmos_transfer1/diffusion/training/models/model_image.py:96:__init__] Using mean loss reduce with loss scale 1.0
+[05-11 07:42:50|CRITICAL|cosmos_transfer1/diffusion/training/models/model_image.py:97:__init__] Enable loss masking: False
+[05-11 07:42:50|INFO|cosmos_transfer1/diffusion/training/models/model_ctrl.py:51:build_model] Start creating base model
+[05-11 07:42:50|CRITICAL|cosmos_transfer1/diffusion/training/networks/general_dit.py:424:build_pos_embed] Building positional embedding with rope3d class, impl <class 'cosmos_transfer1.diffusion.module.position_embedding.VideoRopePosition3DEmb'>
+[05-11 07:42:50|CRITICAL|cosmos_transfer1/diffusion/training/modules/blocks.py:55:__init__] Using AdaLN LoRA Flag: True. We enable bias if no AdaLN LoRA for backward compatibility.
+[05-11 07:43:29|CRITICAL|cosmos_transfer1/diffusion/training/networks/general_dit.py:267:__init__] Building affine embedding normalization layer
+[05-11 07:44:06|INFO|cosmos_transfer1/diffusion/training/networks/general_dit_video_conditioned.py:37:__init__] VideoExtendGeneralDIT in_channels: 17
+[05-11 07:44:06|INFO|cosmos_transfer1/diffusion/training/models/model_ctrl.py:113:load_base_model] Loading base model checkpoint (local): checkpoints/nvidia/Cosmos-Transfer1-7B/checkpoints_tp/base_model_model_mp_0.pt
+[05-11 07:44:14|SUCCESS|cosmos_transfer1/diffusion/training/models/model_ctrl.py:115:load_base_model] Complete loading base model checkpoint (local): checkpoints/nvidia/Cosmos-Transfer1-7B/checkpoints_tp/base_model_model_mp_0.pt
+[05-11 07:44:14|WARNING|cosmos_transfer1/diffusion/training/models/model_ctrl.py:123:load_base_model] Using non-EMA base model
+[05-11 07:44:14|INFO|cosmos_transfer1/diffusion/training/models/model_ctrl.py:133:load_base_model] Done loading the base model checkpoint.
+[05-11 07:44:14|INFO|cosmos_transfer1/diffusion/training/models/model_ctrl.py:56:build_model] Done creating base model
+[05-11 07:44:14|INFO|cosmos_transfer1/diffusion/training/models/model_ctrl.py:58:build_model] Start creating ctrlnet model
+[05-11 07:44:14|CRITICAL|cosmos_transfer1/diffusion/training/networks/general_dit.py:424:build_pos_embed] Building positional embedding with rope3d class, impl <class 'cosmos_transfer1.diffusion.module.position_embedding.VideoRopePosition3DEmb'>
+[05-11 07:44:14|CRITICAL|cosmos_transfer1/diffusion/training/modules/blocks.py:55:__init__] Using AdaLN LoRA Flag: True. We enable bias if no AdaLN LoRA for backward compatibility.
+[05-11 07:44:19|CRITICAL|cosmos_transfer1/diffusion/training/networks/general_dit.py:267:__init__] Building affine embedding normalization layer
+[05-11 07:44:25|INFO|cosmos_transfer1/diffusion/training/networks/general_dit_video_conditioned.py:37:__init__] VideoExtendGeneralDIT in_channels: 17
+[05-11 07:44:30|CRITICAL|cosmos_transfer1/utils/ema.py:297:initialize_multi_rank_ema] [RANK 1]using MCore parallel_state for EMA initialization. DP RANK: 1
+PowerEMATracker: rank 1, rate 0.05
+[05-11 07:44:30|CRITICAL|cosmos_transfer1/utils/ema.py:297:initialize_multi_rank_ema] [RANK 2]using MCore parallel_state for EMA initialization. DP RANK: 2
+PowerEMATracker: rank 2, rate 0.025
+[05-11 07:44:30|CRITICAL|cosmos_transfer1/utils/ema.py:297:initialize_multi_rank_ema] [RANK 3]using MCore parallel_state for EMA initialization. DP RANK: 3
+[05-11 07:44:31|CRITICAL|cosmos_transfer1/diffusion/training/models/model_ctrl.py:69:build_model] Only training ctrlnet model and keeping base model frozen
+[05-11 07:44:31|INFO|cosmos_transfer1/diffusion/training/models/model_ctrl.py:72:build_model] Done creating ctrlnet model
+[05-11 07:44:31|CRITICAL|cosmos_transfer1/utils/ema.py:297:initialize_multi_rank_ema] [RANK 0]using MCore parallel_state for EMA initialization. DP RANK: 0
+[05-11 07:44:31|WARNING|cosmos_transfer1/utils/ema.py:298:initialize_multi_rank_ema] It should not used together with FSDP!
+PowerEMATracker: rank 0, rate 0.1
+[05-11 07:44:31|CRITICAL|cosmos_transfer1/utils/ema.py:297:initialize_multi_rank_ema] [RANK 6]using MCore parallel_state for EMA initialization. DP RANK: 6
+[05-11 07:44:31|CRITICAL|cosmos_transfer1/utils/ema.py:297:initialize_multi_rank_ema] [RANK 4]using MCore parallel_state for EMA initialization. DP RANK: 4
+[05-11 07:44:31|CRITICAL|cosmos_transfer1/utils/ema.py:297:initialize_multi_rank_ema] [RANK 7]using MCore parallel_state for EMA initialization. DP RANK: 7
+[05-11 07:44:31|CRITICAL|cosmos_transfer1/utils/ema.py:297:initialize_multi_rank_ema] [RANK 5]using MCore parallel_state for EMA initialization. DP RANK: 5
+[05-11 07:44:32|INFO|cosmos_transfer1/utils/misc.py:160:set_random_seed] Using random seed 0.
+Done dumping model to reg model path
+[05-11 07:46:21|INFO|scripts/convert_ckpt_tp_to_fsdp.py:277:convert_tp_checkpoint_to_fsdp] Conversion complete. FSDP-compatible checkpoints saved for experiment: CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain
+Regular model saved at checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/fsdp_checkpoints/iter_000000100_reg_model.pt
+EMA model saved at checkpoints/cosmos_transfer1_posttrain/CTRL_7Bv1_lvg/CTRL_7Bv1pt3_lvg_tp_121frames_control_input_vis_block3_posttrain/fsdp_checkpoints/iter_000000100_ema_model_only.pt

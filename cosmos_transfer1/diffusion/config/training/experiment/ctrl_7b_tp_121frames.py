@@ -104,8 +104,8 @@ def make_ctrlnet_config_7b_training(
                 timestamp_seed=True,
             ),
             model_parallel=dict(
-                # jusleung 4 gpu instead
-                tensor_model_parallel_size=4,
+                # jusleung 8 gpu
+                tensor_model_parallel_size=8,
                 sequence_parallel=True,
             ),
             model=dict(
@@ -131,7 +131,7 @@ def make_ctrlnet_config_7b_training(
                         condition_location="first_random_n",
                         cfg_unconditional_type="zero_condition_region_condition_mask",
                         apply_corruption_to_condition_region="noise_with_sigma",
-                        condition_on_augment_sigma=False,
+
                         dropout_rate=0.0,
                         first_random_n_num_condition_t_max=2,
                         normalize_condition_latent=False,
