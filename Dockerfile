@@ -29,7 +29,7 @@ RUN ls -l /usr/lib/python3/dist-packages/blinker-1.7.0.dist-info && rm -rf /usr/
 RUN echo "Installing dependencies. This will take a while..." && \
     pip install --no-cache-dir -r /requirements.txt && \
     pip install -v --upgrade --no-build-isolation --no-dependencies sam2==1.1.0 && \
-    pip install transformer-engine[pytorch] && \
+    pip install transformer-engine[pytorch]==2.5.0 && \
     pip install decord==0.6.0 && \
     git clone https://github.com/NVIDIA/apex && \
     pip install -v --disable-pip-version-check --no-cache-dir --no-build-isolation --config-settings "--build-option=--cpp_ext" --config-settings "--build-option=--cuda_ext" ./apex && \
@@ -43,5 +43,9 @@ RUN apt-get install -y libmagic1
 
 RUN mkdir -p /workspace
 WORKDIR /workspace
+
+COPY . /workspace
+
+RUN pip install requests>=2.31.0
 
 CMD ["/bin/bash"]

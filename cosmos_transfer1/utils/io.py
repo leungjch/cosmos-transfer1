@@ -42,8 +42,8 @@ def save_video(video, fps, H, W, video_save_quality, video_save_path):
     """Save video frames to file.
 
     Args:
-        grid (np.ndarray): Video frames array [T,H,W,C]
-        fps (int): Frames per second
+        video (np.ndarray): Video frames array [T,H,W,C]
+        fps (int): Frames per second for the output video
         H (int): Frame height
         W (int): Frame width
         video_save_quality (int): Video encoding quality (0-10)
@@ -53,7 +53,7 @@ def save_video(video, fps, H, W, video_save_quality, video_save_path):
         "fps": fps,
         "quality": video_save_quality,
         "macro_block_size": 1,
-        "ffmpeg_params": ["-s", f"{W}x{H}"],
+        "ffmpeg_params": ["-c:v", "libx264", "-s", f"{W}x{H}"],
         "output_params": ["-f", "mp4"],
     }
     imageio.mimsave(video_save_path, video, "mp4", **kwargs)
