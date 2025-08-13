@@ -16,6 +16,8 @@
 import json
 import os
 from datetime import datetime
+from urllib.parse import urlparse
+from urllib.request import urlopen, Request
 
 import gradio as gr
 
@@ -26,6 +28,35 @@ from server.model_factory import create_pipeline
 
 pipeline = None
 validator = None
+
+
+def download_file_from_url(url, output_dir, default_filename="input_file"):
+    """Download a file from a URL and save it locally using urllib.
+
+    Args:
+        url (str): The URL of the file to download
+        output_dir (str): Directory to save the file in
+        default_filename (str): Fallback filename if the URL does not contain one
+
+    Returns:
+        str: Path to the downloaded file
+    """
+    try:
+        parsed_url = urlparse(url)
+        filename = os.path.basename(parsed_url.path) or default_filename
+        local_path = os.path.join(output_dir, filename)
+
+        req = Request(url)
+        with urlopen(req) as response, open(local_path, "wb") as f:
+            while True:
+                chunk = response.read(8192)
+                if not chunk:
+                    break
+                f.write(chunk)
+
+        return local_path
+    except Exception as e:
+        raise Exception(f"Failed to download from URL: {e}")
 
 
 def infer_wrapper(
@@ -42,6 +73,42 @@ def infer_wrapper(
             return None, f"Error parsing request JSON: {e}\nPlease ensure your request is valid JSON."
 
         log.info(f"Model parameters: {json.dumps(request_data, indent=4)}")
+
+        # Handle URL input_video_path
+        if "input_video_path" in request_data and isinstance(request_data["input_video_path"], str) and request_data["input_video_path"].startswith(("http://", "https://")):
+            try:
+                local_video_path = download_file_from_url(request_data["input_video_path"], output_folder, default_filename="input_video.mp4")
+                request_data["input_video_path"] = local_video_path
+                log.info(f"Downloaded video from URL to: {local_video_path}")
+            except Exception as e:
+                return None, f"Error downloading video from URL: {e}"
+
+        # Handle URL input_control fields inside controlnet specs
+        control_names = [
+            "vis",
+            "seg",
+            "edge",
+            "depth",
+            "keypoint",
+            "upscale",
+            "hdmap",
+            "lidar",
+        ]
+        for control_name in control_names:
+            control_spec = request_data.get(control_name)
+            if isinstance(control_spec, dict):
+                input_control_value = control_spec.get("input_control")
+                if isinstance(input_control_value, str) and input_control_value.startswith(("http://", "https://")):
+                    try:
+                        local_ic_path = download_file_from_url(
+                            input_control_value,
+                            output_folder,
+                            default_filename=f"{control_name}_input_control",
+                        )
+                        control_spec["input_control"] = local_ic_path
+                        log.info(f"Downloaded {control_name}.input_control from URL to: {local_ic_path}")
+                    except Exception as e:
+                        return None, f"Error downloading {control_name}.input_control from URL: {e}"
 
         args_dict = validator.parse_and_validate(request_data)
         args_dict["output_dir"] = output_folder
@@ -97,6 +164,7 @@ def create_gradio_interface():
                             "sigma_max": 70.0,
                             "blur_strength": "medium",
                             "canny_threshold": "medium",
+                            "reencode_fps": 30,
                             "edge": {"control_weight": 1.0},
                         },
                         indent=2,
@@ -130,6 +198,7 @@ def create_gradio_interface():
                     - `sigma_max` (float): Maximum noise level (0-80, default: 70.0)
                     - `blur_strength` (string): One of ["very_low", "low", "medium", "high", "very_high"] (default: "medium")
                     - `canny_threshold` (string): One of ["very_low", "low", "medium", "high", "very_high"] (default: "medium")
+                    - `reencode_fps` (int): Target FPS for output video re-encoding (default: uses pipeline fps of 24)
                     ```
                     """
                     )

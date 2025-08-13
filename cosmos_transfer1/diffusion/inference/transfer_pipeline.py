@@ -114,6 +114,7 @@ class TransferValidator:
         canny_threshold="medium",
         output_dir: str = "outputs/",
         num_input_frames: int = 1,
+        reencode_fps=None,
     ):
         """Validate and process transfer generation parameters.
 
@@ -151,7 +152,10 @@ class TransferValidator:
         args_dict["blur_strength"] = blur_strength
         args_dict["canny_threshold"] = canny_threshold
         args_dict["output_dir"] = output_dir
-        args_dict["num_input_frames"] = num_input_frames
+        
+        # Re-encoding FPS parameter
+        if reencode_fps is not None:
+            args_dict["reencode_fps"] = reencode_fps
 
         # validate controlnet_specs
         self.validate_control_spec(controlnet_specs)
@@ -301,6 +305,7 @@ class TransferPipeline:
         canny_threshold="medium",
         num_input_frames: int = 1,
         output_dir: str = "outputs/",
+        reencode_fps=None,
     ):
         """Generate video using the transfer pipeline.
 
@@ -373,9 +378,12 @@ class TransferPipeline:
                 prompt_save_path = os.path.join(output_dir, f"{self.video_save_name}.txt")
                 os.makedirs(os.path.dirname(video_save_path), exist_ok=True)
 
+                # Use reencode_fps if provided, otherwise use pipeline fps
+                target_fps = reencode_fps if reencode_fps is not None else self.pipeline.fps
+                
                 save_video(
                     video=video,
-                    fps=self.pipeline.fps,
+                    fps=target_fps,
                     H=video.shape[1],
                     W=video.shape[2],
                     video_save_quality=5,

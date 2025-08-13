@@ -23,4 +23,4 @@ class Config:
     log_file = os.getenv("LOG_FILE", "output.log")
     num_gpus = int(os.environ.get("NUM_GPU", 1))
     factory_module = os.getenv("FACTORY_MODULE", "cosmos_transfer1.diffusion.inference.transfer_pipeline")
-    factory_function = os.getenv("FACTORY_FUNCTION", "create_transfer_pipeline")
+    factory_function = os.getenv("FACTORY_FUNCTION", "create_transfer_pipeline_AV")
